@@ -1,6 +1,6 @@
 from Functions.llist import *
 
-def add2nums(head1,head2):
+def TRASH(head1,head2):
     curr1 = head1
     curr2 = head2
     n1 = 0
@@ -36,9 +36,23 @@ def add2nums(head1,head2):
             tail = newNode
     return head
 
-    
+def add2nums(head1,head2):
+    result = Node(0)
+    result_tail = result
+    carry = 0
 
-    
+    while head1 or head2 or carry:
+        val1 = (head1.data if head1 else 0)
+        val2 = (head2.data if head2 else 0)
+
+        carry,out = divmod(val1+val2+carry,10)
+        result_tail.next  = Node(out)
+        result_tail = result_tail.next
+
+        head1 = (head1.next if head1 else None)
+        head2 = (head2.next if head2 else None)
+    return result.next
+
 
 head1 = StakeInput()
 head2 = StakeInput()
